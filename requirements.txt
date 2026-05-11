@@ -1,0 +1,5 @@
+# No dependencies required for the core library.
+# Pillow is only needed to run the built-in demo:
+#   pip install Pillow
+#   python place_images_in_cells.py
+Pillow>=9.0
