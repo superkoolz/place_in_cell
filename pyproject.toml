@@ -1,10 +1,10 @@
 [build-system]
 requires = ["setuptools>=61"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "place_in_cell"
-version = "1.0.0"
+version = "1.0.1"
 description = "Place images inside Excel cells (not floating) using pure Python — no Excel required"
 readme = "README.md"
 requires-python = ">=3.9"
