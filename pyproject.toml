@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "place_in_cell"
+version = "1.0.0"
+description = "Place images inside Excel cells (not floating) using pure Python — no Excel required"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "superkoolz"}]
+keywords = [
+    "excel", "xlsx", "ooxml", "image", "in-cell", "place-in-cell",
+    "office365", "microsoft-365", "excel-automation", "spreadsheet",
+    "LocalImageCellValue", "richdata"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business :: Office Suites",
+    "Intended Audience :: Developers",
+]
+
+[project.optional-dependencies]
+demo = ["Pillow>=9.0"]
+
+[tool.setuptools]
+py-modules = ["place_in_cell"]

@@ -30,10 +30,14 @@ Typical use cases:
 
 ## Installation
 
-No package yet — just drop `place_images_in_cells.py` into your project:
+```bash
+pip install place_in_cell
+```
+
+Or directly from GitHub:
 
 ```bash
-curl -O https://raw.githubusercontent.com/superkoolz/place_in_cell/main/place_images_in_cells.py
+pip install git+https://github.com/superkoolz/place_in_cell
 ```
 
 ---
@@ -41,7 +45,7 @@ curl -O https://raw.githubusercontent.com/superkoolz/place_in_cell/main/place_im
 ## Quick start
 
 ```python
-from place_images_in_cells import create_excel_with_cell_images
+from place_in_cell import create_excel_with_cell_images
 
 create_excel_with_cell_images(
     output_path="catalog.xlsx",
@@ -89,8 +93,7 @@ Because `create_excel_with_cell_images` takes a plain list of dicts and writes a
 ```python
 # Flask / FastAPI — serve a generated xlsx as a download
 from flask import Flask, send_file
-import io, zipfile
-from place_images_in_cells import create_excel_with_cell_images
+from place_in_cell import create_excel_with_cell_images
 
 app = Flask(__name__)
 
@@ -109,7 +112,7 @@ def export():
 ```python
 # Batch pipeline — process a folder of images into one spreadsheet
 import os
-from place_images_in_cells import create_excel_with_cell_images
+from place_in_cell import create_excel_with_cell_images
 
 images = [
     {"cell": f"A{i}", "image": os.path.join("photos", fname)}
@@ -168,9 +171,8 @@ The `_localImage` rich value structure:
 ## Demo
 
 ```bash
-pip install Pillow
-python place_images_in_cells.py
-# → generates test_cell_images.xlsx with 6 colour-block images in A1:B3
+pip install "place_in_cell[demo]"
+python -c "from place_in_cell import __demo__; __demo__()"
 ```
 
 ---

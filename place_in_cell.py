@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-place_images_in_cells.py
+place_in_cell.py
 
 Bulk-place images inside Excel cells using the OOXML "Place in Cell" feature
 (LocalImageCellValue). No Excel installation required. Works on any platform.
@@ -9,7 +9,7 @@ Supports PNG, JPEG, GIF, BMP, TIFF, WEBP for local files.
 Supports HTTPS URLs via WebImageCellValue (Excel fetches the image at open time).
 
 Usage:
-    from place_images_in_cells import create_excel_with_cell_images
+    from place_in_cell import create_excel_with_cell_images
 
     create_excel_with_cell_images(
         output_path="output.xlsx",
@@ -433,18 +433,14 @@ def _rich_value_rel_rels(all_entries: list) -> str:
 
 
 # ---------------------------------------------------------------------------
-# CLI / demo
+# Demo (callable as a function for pip install [demo] usage)
 # ---------------------------------------------------------------------------
 
-if __name__ == "__main__":
-    import sys
-
-    # Quick self-test: create coloured PNG tiles on the fly (requires Pillow)
+def __demo__():
     try:
         from PIL import Image, ImageDraw
     except ImportError:
-        print("Pillow is not installed. Run:  pip install Pillow")
-        sys.exit(1)
+        raise ImportError("Run: pip install 'place_in_cell[demo]'")
 
     colours = [
         (220, 60,  60,  "Red"),
@@ -454,7 +450,6 @@ if __name__ == "__main__":
         (140, 60,  180, "Purple"),
         (40,  180, 180, "Teal"),
     ]
-
     cells   = ["A1", "A2", "A3", "B1", "B2", "B3"]
     entries = []
 
@@ -475,8 +470,11 @@ if __name__ == "__main__":
         col_width=22,
     )
 
-    # Cleanup temp PNGs
     for e in entries:
         os.remove(e["image"])
 
     print("Open test_cell_images.xlsx in Excel to verify.")
+
+
+if __name__ == "__main__":
+    __demo__()
